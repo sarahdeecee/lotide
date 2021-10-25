@@ -5,7 +5,7 @@ const assertEqual = function(actual, expected) {
 
 const head = function(array) {
   return array.length > 0 ? array[0] : undefined;
-}
+};
 
 assertEqual(head(["Light", "house", "labs"]), "Light");
 assertEqual(head(["Light", "house", "labs"]), "house");
