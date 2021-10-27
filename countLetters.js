@@ -8,7 +8,7 @@ const assertEqual = function(actual, expected) {
 const countLetters = (sentence) => {
   // return count of letters
   const results = {};
-  const noSpaces = sentence.split(" ").join(""); 
+  const noSpaces = sentence.split(" ").join("");
   for (let char of noSpaces) {
     if (results[char]) {
       results[char] += 1;
@@ -17,6 +17,6 @@ const countLetters = (sentence) => {
     }
   }
   return results;
-}
+};
 
 console.log(countLetters("lighthouse in the house"));
