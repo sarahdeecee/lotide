@@ -1,17 +1,23 @@
 const middle = require('../middle');
-const assertArraysEqual = require('../assertArraysEqual');
+const assert = require('chai').assert;
 
-const testSmall1 = [1];
-const testSmall2 = [1, 2];
-const resultSmall = [];
-const testOdd1 = [2, 3, 4];
-const testOdd2 = [1, 2, 3, 4, 5];
-const resultOdd = [3];
-const testEven1 = [2, 3, 4, 5];
-const testEven2 = [1, 2, 3, 4, 5, 6];
-const resultEven = [3, 4];
-
-assertArraysEqual(resultOdd, middle(testOdd1));
-assertArraysEqual(resultOdd, middle(testOdd2));
-assertArraysEqual(resultEven, middle(testEven1));
-assertArraysEqual(resultEven, middle(testEven2));
+describe("#middle", () => {
+  it("returns [ 3 ]  for [ 2, 3, 4 ]", () => {
+    assert.deepEqual(middle([2, 3, 4]),[3]);
+  });
+  it("returns [ 3 ]  for [ 1, 2, 3, 4, 5 ]", () => {
+    assert.deepEqual(middle([1, 2, 3, 4, 5]), [3]); 
+  });
+  it("returns [ 3, 4 ]  for [ 2, 3, 4, 5 ]", () => {
+    assert.deepEqual(middle([2, 3, 4, 5]),[3, 4]);
+  });
+  it("returns [ 3, 4 ]  for [ 1, 2, 3, 4, 5, 6 ]", () => {
+    assert.deepEqual(middle([1, 2, 3, 4, 5, 6]), [3, 4]); 
+  });
+  it("returns 'house' for ['Light', 'house', 'labs']", () => {
+    assert.deepEqual(middle(['Light', 'house', 'labs']), ['house']); 
+  });
+  it("does not return 'Light' for ['Light', 'house', 'labs']", () => {
+    assert.notDeepEqual(middle(['Light', 'house', 'labs']), ['Light']); 
+  });
+});

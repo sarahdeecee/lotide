@@ -1,16 +1,22 @@
 const tail = require('../tail');
-const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 
-const words = ["Light", "house", "labs"];
-const numbers = [1, 2, 3, 4, 5, 6];
-const one = [1];
-const empty = [];
-const result1 = tail(words);
-const result2 = tail(numbers);
-assertEqual(result1.length, 2);
-assertEqual(result1[0], words[1]);
-assertEqual(result2[1], numbers[2]);
-console.log(`words: ${words} | tail(words): ${tail(words)}`);
-console.log(`numbers: ${numbers} | tail(numbers): ${tail(numbers)}`);
-console.log(`one: ${one} | tail(one): ${tail(one)}`);
-console.log(`empty: ${empty} | tail(empty): ${tail(empty)}`);
+const array = [1, 2, 3, 4, 5, 6];
+
+describe("#tail", () => {
+  it("returns ['house', 'labs'] for ['Light', 'house', 'labs']", () => {
+    assert.deepEqual(tail(['Light', 'house', 'labs']), ['house', 'labs']); 
+  });
+  it("returns [ 2, 3, 3, 4, 5, 6 ]  for [ 1, 2, 3, 4, 5, 6 ]", () => {
+    assert.deepEqual(tail([1, 2, 3, 4, 5, 6]),[2, 3, 4, 5, 6]);
+  });
+  it("returns [] for [1]", () => {
+    assert.deepEqual(tail([1]),[]);
+  });
+  it("returns [] for []", () => {
+    assert.deepEqual(tail([]),[]);
+  });
+  it("should not change the original array", () => {
+    assert.notDeepEqual(tail(array),array);
+  });
+});
