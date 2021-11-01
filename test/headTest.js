@@ -1,10 +1,28 @@
 const head = require('../head');
 const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 
-assertEqual(head(["Light", "house", "labs"]), "Light");
-assertEqual(head(["Light", "house", "labs"]), "house");
-assertEqual(head(["Light"]), "Light");
-assertEqual(head([]), "Light");
-assertEqual(head([1, 2, 3, 4]), 1);
-assertEqual(head([1, 2, 3, 4]), "1"); //Mismatched types
-assertEqual(head(["1", 2, 3, 4]), "1"); //Mismatched types
+// assertEqual(head([1, 2, 3, 4]), 1);
+// assertEqual(head([1, 2, 3, 4]), "1"); //Mismatched types
+// assertEqual(head(["1", 2, 3, 4]), "1"); //Mismatched types
+
+describe("#head", () => {
+  it("returns 1 for [1, 2, 3]", () => {
+    assert.strictEqual(head([1, 2, 3]), 1);
+  });
+  it("returns '5' for ['5']", () => {
+    assert.strictEqual(head(['5']), '5'); 
+  });
+  it("returns 'Light' for ['Light', 'house', 'labs']", () => {
+    assert.strictEqual(head(['Light', 'house', 'labs']), 'Light'); 
+  });
+  it("does not return 'house' for ['Light', 'house', 'labs']", () => {
+    assert.notStrictEqual(head(['Light', 'house', 'labs']), 'house'); 
+  });
+  it("does not return '1' for [1, 2, 3, 4]", () => {
+    assert.notStrictEqual(head([1, 2, 3, 4]), '1'); 
+  });
+  it("returns '1' for ['1', 2, 3, 4]", () => {
+    assert.strictEqual(head(['1', 2, 3, 4]), '1'); 
+  });  
+});
