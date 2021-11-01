@@ -1,10 +1,5 @@
 const head = require('../head');
-const assertEqual = require('../assertEqual');
 const assert = require('chai').assert;
-
-// assertEqual(head([1, 2, 3, 4]), 1);
-// assertEqual(head([1, 2, 3, 4]), "1"); //Mismatched types
-// assertEqual(head(["1", 2, 3, 4]), "1"); //Mismatched types
 
 describe("#head", () => {
   it("returns 1 for [1, 2, 3]", () => {
